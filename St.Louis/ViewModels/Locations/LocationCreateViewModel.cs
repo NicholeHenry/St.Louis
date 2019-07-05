@@ -7,7 +7,7 @@ using St.Louis.Data;
 using St.Louis.Data.Repositories;
 using St.Louis.Models;
 
-namespace St.Louis.ViewModels
+namespace St.Louis.ViewModels.Location
 {
     public class LocationCreateViewModel
     {
@@ -17,6 +17,7 @@ namespace St.Louis.ViewModels
         public Region Region { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+        public bool CheckboxAnswer { get; set; }
 
         public IEnumerable <SelectListItem> Categories { get; set; }
 
