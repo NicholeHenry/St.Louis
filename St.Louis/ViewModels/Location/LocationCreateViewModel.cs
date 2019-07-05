@@ -17,6 +17,7 @@ namespace St.Louis.ViewModels
         public Region Region { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+
         public IEnumerable <SelectListItem> Categories { get; set; }
 
         public LocationCreateViewModel() { }

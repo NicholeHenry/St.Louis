@@ -10,7 +10,8 @@ namespace St.Louis.Models
         public int Id { set; get; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public virtual List<RateReview> RatingsReviews { get; set; }
+        public virtual List<RateReview> Ratings { get; set; }
+        public virtual List<RateReview> Reviews { get; set; }
        
         public virtual List<CategoryLocation> CategoryLocations { get; set; }
         public string Address { get; set; }
