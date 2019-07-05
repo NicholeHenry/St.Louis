@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace St.Louis.Data.Repositories
 {
-    public class BaseRepository <TEntity> where TEntity: class, IModel
+    public class BaseRepository <TEntity>: IRepository<TEntity> where TEntity :class, IModel
     {
         protected ApplicationDbContext context;
         protected DbSet<TEntity> models;

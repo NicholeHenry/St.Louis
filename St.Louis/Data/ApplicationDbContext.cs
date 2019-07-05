@@ -13,6 +13,7 @@ namespace St.Louis.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<RateReview> RateReviews { get; set; }
         public DbSet<CategoryLocation> CategoriesLocations { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

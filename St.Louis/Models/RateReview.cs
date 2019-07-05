@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace St.Louis.Models
 {
-    public class RateReview
+    public class RateReview : IModel
     {
         public int Id { get; set; }
         public int Rating { get; set; }
