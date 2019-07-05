@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace St.Louis.Models
 {
-    public class Category
+    public class Category: IModel
     {
 
         public int Id { get; set; }
