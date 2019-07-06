@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using St.Louis.Data.Repositories;
 using St.Louis.ViewModels;
+using St.Louis.ViewModels.Location;
+
 
 namespace St.Louis.Controllers
 {
@@ -18,6 +20,7 @@ namespace St.Louis.Controllers
         }
         public IActionResult Index()
         {
+           // List<LocationListViewModel> location = LocationListViewModel.Get
             return View();
         }
 
