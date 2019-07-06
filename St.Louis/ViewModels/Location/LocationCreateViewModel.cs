@@ -19,19 +19,16 @@ namespace St.Louis.ViewModels.Location
         public string CategoryName { get; set; }
         public bool CheckboxAnswer { get; set; }
 
-        public IEnumerable <SelectListItem> Categories { get; set; }
+        public List <Category> Categories { get; set; }
 
         public LocationCreateViewModel() { }
 
-        public  LocationCreateViewModel(Factory repositoryFactory)
+        public List<Category> GetCategories(Factory repositoryFactory)
         {
-            this.Categories = GetCategoriesList(repositoryFactory);
+            var categoryNames = 
         }
+       
 
-        public LocationCreateViewModel(List<Category> categories)
-        {
-            this.Categories = Categories;
-        }
 
         public void Persist(Factory repositoryFactory)
         {
@@ -49,12 +46,5 @@ namespace St.Louis.ViewModels.Location
 
            
         }
-        private IEnumerable<SelectListItem> GetCategoriesList(Factory repositoryFactory)
-        {
-            return repositoryFactory.GetCategoryRepository()
-                .GetModels()
-                .Select(c => new SelectListItem(c.CategoryName, c.Id.ToString(), c.Id == this.CategoryId));
-        }
         
-    }
 }

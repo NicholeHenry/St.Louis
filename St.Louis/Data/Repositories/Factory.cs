@@ -9,14 +9,14 @@ namespace St.Louis.Data.Repositories
 {
     public class Factory
     {
-        private ApplicationDbContext context;
+        private  ApplicationDbContext context;
 
-        public Factory(ApplicationDbContext context)
+        public  Factory(ApplicationDbContext context)
         {
             this.context = context;
         }
 
-        public IRepository<Location> GetLocationRepository()
+        public  IRepository<Location> GetLocationRepository()
         {
             return new BaseRepository<Location>(context);
         }

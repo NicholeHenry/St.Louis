@@ -16,7 +16,7 @@ namespace St.Louis.ViewModels.Locations
         public List<int> Ratings { get; set; }
         public List<string> Reviews { get; set; }
 
-        public List<string> Categories GetCategoriesList()
+        /*public List<string> Categories GetCategoriesList()
 
         {
 
@@ -52,7 +52,7 @@ namespace St.Louis.ViewModels.Locations
 
             };
 
-        }
+        }*/
 
 
 
@@ -66,4 +66,4 @@ namespace St.Louis.ViewModels.Locations
 
     }
 }
-}
+

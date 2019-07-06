@@ -20,8 +20,8 @@ namespace St.Louis.Controllers
         }
         public IActionResult Index()
         {
-           // List<LocationListViewModel> location = LocationListViewModel.Get
-            return View();
+            List<LocationListViewModel> location = LocationListViewModel.GetLocations( repositoryFactory);
+            return View(location);
         }
 
         [HttpGet]
@@ -36,7 +36,7 @@ namespace St.Louis.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
-
+            
             model.Persist(repositoryFactory);
             return RedirectToAction(actionName: nameof(Index));
         }

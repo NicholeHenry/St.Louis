@@ -1,4 +1,4 @@
-﻿@model St.Louis.ViewModels.Locations.LocationCreateViewModel
+﻿@model St.Louis.ViewModels.Location.LocationCreateViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -36,7 +36,7 @@
                 @{ 
                     for (int i = 0; i < Model.Count(); i++)
                     {
-                <input asp-for="@Model[i].CheckboxAnswer" type="checkbox"/>
+                <input asp-for="@Model.[i].CheckboxAnswer" type="checkbox"/>
                <label asp-for="@Model[i].CategoryId">@Model[i].CategoryName</label>
                <input asp-for="@Model[i].CategoryId" type="hidden"/>
                <input asp-for="@Model[i],CategoryName" type="hidden"/>

@@ -13,14 +13,14 @@ namespace St.Louis.ViewModels.Location
     {
         
 
-           /* public static List<LocationListViewModel> GetLocations()
+            public static List<LocationListViewModel> GetLocations(Factory repositoryFactory)
             {
-                return Factory.GetLocationRepository()
+                return repositoryFactory.GetLocationRepository()
                     .GetModels()
                     .Cast<Models.Location>()
                     .Select(location => new LocationListViewModel(location))
                     .ToList();
-            }*/
+            }
 
             public int Id { get; set; }
             public string Name { get; set; }
@@ -38,6 +38,7 @@ namespace St.Louis.ViewModels.Location
                 this.AverageRating = location.Ratings.Count > 0 ? Math.Round(location.Ratings.Average(x => x.Rating), 2).ToString() : "none";
                 this.Description = location.Description;
             }
-        
+
+      
     }
 }
