@@ -24,12 +24,12 @@ namespace St.Louis.Controllers
             return View(location);
         }
 
-       /* [HttpGet]
+        [HttpGet]
         public IActionResult Create()
         {
-           // LocationCreateViewModel model = new LocationCreateViewModel(repositoryFactory);
-           // return View(model);
-        }*/
+            LocationCreateViewModel model = new LocationCreateViewModel(repositoryFactory);
+            return View(model);
+        }
 
         [HttpPost]
         public IActionResult Create(LocationCreateViewModel model)
