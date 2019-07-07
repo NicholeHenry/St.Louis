@@ -29,19 +29,20 @@
             </div>
             <div class="form-group">
                 <label asp-for="Region" class="control-label"></label>
-                <input asp-for="Region" class="form-control" />
+                <select asp-for="Region" asp-items="Html.GetEnumSelectList<Region>()"></select>
+                
                 <span asp-validation-for="Region" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <input asp-for="CategoryId" class="form-control" />
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                @foreach(var category in Model.Categories)
+                {
+                    <label>@category.CategoryName</label>
+                    <input type="checkbox" name="CategoryId" value="@category.Id"/>
+                }
+               
             </div>
-            <div class="form-group">
-                <label asp-for="CategoryName" class="control-label"></label>
-                <input asp-for="CategoryName" class="form-control" />
-                <span asp-validation-for="CategoryName" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
