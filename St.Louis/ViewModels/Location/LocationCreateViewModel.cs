@@ -17,19 +17,16 @@ namespace St.Louis.ViewModels.Location
         public Region Region { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public bool CheckboxAnswer { get; set; }
+        // public bool CheckboxAnswer { get; set; }
 
-        public List <Category> Categories { get; set; }
+        public List<int> CategoryIds { get; set; }
+        public List<Category> Categories { get; set; }
 
         public LocationCreateViewModel() { }
-
-        public List<Category> GetCategories(Factory repositoryFactory)
-        {
-            var categoryNames = 
-        }
-       
-
-
+        /* public LocationCreateViewModel(Factory repositoryFactory)
+         {
+             this.Categories = repositoryFactory.GetCategoryRepository();
+         }*/
         public void Persist(Factory repositoryFactory)
         {
             Models.Location location = new Models.Location
@@ -38,13 +35,13 @@ namespace St.Louis.ViewModels.Location
                 Description = this.Description,
                 Address = this.Address,
                 Region = this.Region,
-             
 
-                
+
+
             };
             repositoryFactory.GetLocationRepository().Save(location);
 
-           
+
         }
-        
+    }   
 }
