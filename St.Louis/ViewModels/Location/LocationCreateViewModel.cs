@@ -17,16 +17,22 @@ namespace St.Louis.ViewModels.Location
         public Region Region { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        // public bool CheckboxAnswer { get; set; }
+       
 
         public List<int> CategoryIds { get; set; }
-        public List<Category> Categories { get; set; }
+        public List<Models.Category> Categories { get; set; }
 
         public LocationCreateViewModel() { }
-        /* public LocationCreateViewModel(Factory repositoryFactory)
+         public LocationCreateViewModel(Factory repositoryFactory)
          {
-             this.Categories = repositoryFactory.GetCategoryRepository();
-         }*/
+            this.Categories = repositoryFactory.GetCategoryRepository()
+                .GetModels()
+                .Cast<Models.Category>()
+                .ToList();
+                
+
+
+         }
         public void Persist(Factory repositoryFactory)
         {
             Models.Location location = new Models.Location
@@ -39,9 +45,24 @@ namespace St.Louis.ViewModels.Location
 
 
             };
+            
+            
+
+            List<CategoryLocation> categoryLocations = CreateManyToManyRelationships(location.Id);
+
+            location.CategoryLocations = categoryLocations;
+
             repositoryFactory.GetLocationRepository().Save(location);
 
-
         }
+
+        private List<CategoryLocation> CreateManyToManyRelationships(int locationId)
+        {
+            return CategoryIds.Select(categoryId => new CategoryLocation { LocationId = locationId, CategoryId = categoryId }).ToList();
+        }
+
+
+
+       
     }   
 }
