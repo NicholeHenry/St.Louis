@@ -17,13 +17,13 @@ namespace St.Louis.ViewModels.Location
         public Region Region { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-       
-
         public List<int> CategoryIds { get; set; }
         public List<Models.Category> Categories { get; set; }
 
         public LocationCreateViewModel() { }
-         public LocationCreateViewModel(Factory repositoryFactory)
+
+
+        public LocationCreateViewModel(Factory repositoryFactory)
          {
             this.Categories = repositoryFactory.GetCategoryRepository()
                 .GetModels()
@@ -45,15 +45,14 @@ namespace St.Louis.ViewModels.Location
 
 
             };
-            
-            
+            repositoryFactory.GetLocationRepository().Save(location);
+
 
             List<CategoryLocation> categoryLocations = CreateManyToManyRelationships(location.Id);
 
             location.CategoryLocations = categoryLocations;
 
-            repositoryFactory.GetLocationRepository().Save(location);
-
+            repositoryFactory.GetCategoryRepository().Save(categoryLocations);
         }
 
         private List<CategoryLocation> CreateManyToManyRelationships(int locationId)

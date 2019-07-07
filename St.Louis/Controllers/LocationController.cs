@@ -35,8 +35,11 @@ namespace St.Louis.Controllers
         public IActionResult Create(int LocationId, LocationCreateViewModel model)
         {
             if (!ModelState.IsValid)
+            {
+
                 return View(model);
-            
+            }
+               
             model.Persist(repositoryFactory);
             return RedirectToAction(actionName: nameof(Index));
         }

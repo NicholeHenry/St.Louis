@@ -30,5 +30,10 @@ namespace St.Louis.Data.Repositories
         {
             return new BaseRepository<Category>(context);
         }
+
+        public IRepository<CategoryLocation> GetCategoryLocationRepository()
+        {
+            return new BaseRepository<CategoryLocation>(context);
+        }
     }
 }

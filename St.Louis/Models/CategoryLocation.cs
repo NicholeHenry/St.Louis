@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace St.Louis.Models
 {
-    public class CategoryLocation
+    public class CategoryLocation : IModel
     {
         public int Id { get; set;}
         public int LocationId { get; set; }
@@ -13,6 +13,6 @@ namespace St.Louis.Models
 
         public virtual Location Location { get; set; }
         public virtual Category Category { get; set; }
-
+        
     }
 }
