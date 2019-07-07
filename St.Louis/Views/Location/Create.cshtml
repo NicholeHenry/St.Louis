@@ -34,7 +34,7 @@
                 <span asp-validation-for="Region" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
+                <label asp-for="CategoryId" class="control-label">Categories</label>
                 @foreach(var category in Model.Categories)
                 {
                     <label>@category.CategoryName</label>

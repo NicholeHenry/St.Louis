@@ -13,7 +13,7 @@ namespace St.Louis.ViewModels.Locations
         public string Name { get; set; }
         public string Description { get; set; }
         public List<string> Categories { get; set; }
-        public List<int> Ratings { get; set; }
+        
         public List<string> Reviews { get; set; }
 
         /*public List<string> Categories GetCategoriesList()

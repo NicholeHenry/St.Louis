@@ -315,7 +315,7 @@ namespace St.Louis.Data.Migrations
             modelBuilder.Entity("St.Louis.Models.RateReview", b =>
                 {
                     b.HasOne("St.Louis.Models.Location")
-                        .WithMany("Ratings, Reviews")
+                        .WithMany("RatingsReviews")
                         
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade);

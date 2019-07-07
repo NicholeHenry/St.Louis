@@ -10,7 +10,7 @@ namespace St.Louis.Models
 
         public int Id { get; set; }
         public string CategoryName { get; set; }
-        public bool CheckBoxAnswer { get; set; }
+        
         public virtual List<CategoryLocation> CategoryLocations { get; set; }
     }
 }
