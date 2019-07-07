@@ -35,7 +35,7 @@ namespace St.Louis.ViewModels.Location
                 Description = this.Description,
                 Address = this.Address,
                 Region = this.Region,
-
+                
 
 
             };
