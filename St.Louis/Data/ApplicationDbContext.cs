@@ -11,7 +11,7 @@ namespace St.Louis.Data
     {
         public DbSet<Location> Locations { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<RateReview> RateReviews { get; set; }
+        public DbSet<RateReview> RateReview { get; set; }
         public DbSet<CategoryLocation> CategoriesLocations { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

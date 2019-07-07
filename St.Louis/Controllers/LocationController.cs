@@ -25,14 +25,14 @@ namespace St.Louis.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(int LocationId)
         {
             LocationCreateViewModel model = new LocationCreateViewModel(repositoryFactory);
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(LocationCreateViewModel model)
+        public IActionResult Create(int LocationId, LocationCreateViewModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);

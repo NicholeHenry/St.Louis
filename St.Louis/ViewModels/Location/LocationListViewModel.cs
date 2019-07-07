@@ -18,6 +18,8 @@ namespace St.Louis.ViewModels.Location
                 return repositoryFactory.GetLocationRepository()
                     .GetModels()
                     .Cast<Models.Location>()
+                    
+                    
                     .Select(location => new LocationListViewModel(location))
                     .ToList();
             }
@@ -27,8 +29,8 @@ namespace St.Louis.ViewModels.Location
             public string AverageRating { get; set; }
             public string Description { get; set; }
             public IEnumerable<SelectListItem> Categories { get; set; }
-            public IEnumerable<SelectListItem> Ratings { get; set; }
-            public IEnumerable<SelectListItem> Review { get; set; }
+           
+            public string Review { get; set; }
         
 
             public LocationListViewModel(Models.Location location)
@@ -37,6 +39,7 @@ namespace St.Louis.ViewModels.Location
                 this.Name = location.Name;
                 this.AverageRating = location.Ratings.Count > 0 ? Math.Round(location.Ratings.Average(x => x.Rating), 2).ToString() : "none";
                 this.Description = location.Description;
+                this.Review = location.Reviews.ToString();
             }
 
       
