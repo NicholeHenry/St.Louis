@@ -52,7 +52,7 @@ namespace St.Louis.ViewModels.Location
 
             location.CategoryLocations = categoryLocations;
 
-            repositoryFactory.GetCategoryRepository().Save(categoryLocations);
+            repositoryFactory.GetCategoryLocationRepository().Save(LocationId);
         }
 
         private List<CategoryLocation> CreateManyToManyRelationships(int locationId)
