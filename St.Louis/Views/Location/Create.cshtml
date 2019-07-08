@@ -12,6 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -30,19 +31,8 @@
             <div class="form-group">
                 <label asp-for="Region" class="control-label"></label>
                 <select asp-for="Region" asp-items="Html.GetEnumSelectList<Region>()"></select>
-                
                 <span asp-validation-for="Region" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label">Categories</label>
-                @foreach(var category in Model.Categories)
-                {
-                    <label>@category.CategoryName</label>
-                    <input type="checkbox" name="CategoryId" value="@category.Id"/>
-                }
-               
-            </div>
-            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

@@ -13,7 +13,7 @@ namespace St.Louis.Models
         public string Description { get; set; }
         public virtual RateReview RatingsReviews { get; set; }
         
-        public virtual List<CategoryLocation> CategoryLocations { get; set; }
+       // public virtual List<CategoryLocation> CategoryLocations { get; set; }
         
         public string Address { get; set; }
         public Region Region { get; set; }

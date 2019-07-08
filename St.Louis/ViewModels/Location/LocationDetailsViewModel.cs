@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using St.Louis.Models;
 
 namespace St.Louis.ViewModels.Locations
 {
@@ -19,13 +20,19 @@ namespace St.Louis.ViewModels.Locations
         public List<int> Ratings { get; set; }
 
             
-        public LocationDetailsViewModel(Factory repositoryFactory)
-        {
-            this.Ratings = GetRatingList(repositoryFactory);
-            this.Reviews = GetReviewsList(repositoryFactory);
+        
 
+        public static List<LocationDetailsViewModel> GetLocationDetails(Factory repositoryFactory)
+        {
+
+            return repositoryFactory.GetLocationRepository()
+            .GetModels()
+            .Cast<Models.Location>()
+            .Select(location => new LocationDetailsViewModel(location))
+            .ToList();
         }
-                
+       
+
         private List<string> GetReviewsList(Factory repositoryFactory)
         {
             return repositoryFactory.GetRateReviewRepository()
@@ -42,17 +49,22 @@ namespace St.Louis.ViewModels.Locations
                 .Select(r => r.Rating).ToList();
         }
 
-        public LocationDetailsViewModel(Models.Location location)
+        public LocationDetailsViewModel(Models.Location location, Factory repositoryFactory )
         {
             this.Id = location.Id;
             this.Name = location.Name;
             this.Description = location.Description;
+            this.Ratings = GetRatingList(repositoryFactory);
+            this.Reviews = GetReviewsList(repositoryFactory);
+
+        }
+
+        public LocationDetailsViewModel(Models.Location location)
+        {
 
         }
 
 
-
-        
     }
 }
 

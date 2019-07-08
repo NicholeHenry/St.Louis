@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using St.Louis.Data.Repositories;
 using St.Louis.ViewModels;
 using St.Louis.ViewModels.Location;
-
+using St.Louis.ViewModels.Locations;
 
 namespace St.Louis.Controllers
 {
@@ -25,14 +25,14 @@ namespace St.Louis.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create(int LocationId)
+        public IActionResult Create()
         {
             LocationCreateViewModel model = new LocationCreateViewModel(repositoryFactory);
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(int LocationId, LocationCreateViewModel model)
+        public IActionResult Create( LocationCreateViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -43,5 +43,14 @@ namespace St.Louis.Controllers
             model.Persist(repositoryFactory);
             return RedirectToAction(actionName: nameof(Index));
         }
+
+        [HttpGet]
+        public IActionResult Details(int LocationId)
+        {
+            List<LocationDetailsViewModel> location = LocationDetailsViewModel.GetLocationDetails(repositoryFactory);
+            return View(location);
+        }
+
+
     }
 }

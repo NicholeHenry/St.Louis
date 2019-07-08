@@ -18,27 +18,21 @@ namespace St.Louis.ViewModels.Location
         public string Name { get; set; }
         public string AverageRating { get; set; }
         public string Description { get; set; }
-        public IEnumerable<SelectListItem> Categories { get; set; }
+       // public IEnumerable<SelectListItem> Categories { get; set; }
         public List<int> Rating { get; set; }
         public List<string> Review { get; set; }
         
 
 
-
-       public LocationListViewModel (Factory repositoryFactory)
-        {
-            this.AverageRating = GetAverageRating(repositoryFactory);
-            this.Review = GetReviewsList(repositoryFactory);
-        }
+       
+     
 
        public static List<LocationListViewModel> GetLocations(Factory repositoryFactory)
             {
-                return repositoryFactory.GetLocationRepository()
-                    .GetModels()
-                    .Cast<Models.Location>()
-                   
-                    .Select(location => new LocationListViewModel(location))
-                    .ToList();
+            return repositoryFactory.GetLocationRepository()
+                .GetModels()
+                .Select(location => new LocationListViewModel(location, repositoryFactory))
+                .ToList();
             }
 
        private List<string> GetReviewsList(Factory repositoryFactory)
@@ -56,17 +50,17 @@ namespace St.Louis.ViewModels.Location
                 .Where(r => r.LocationId == Id)
                 .Select(r => r.Rating).Average().ToString();
          }
-        
 
-            public LocationListViewModel(Models.Location location)
-            {
-                this.Id = location.Id;
-                this.Name = location.Name;
-                this.AverageRating = //location.Ratings.Count > 0 ? Math.Round(location.Ratings.Average(x => x.Rating), 2).ToString() : "none";
-                this.Description = location.Description;
-               
-            }
 
-      
+        public LocationListViewModel(Models.Location location, Factory repositoryFactory)
+        {
+            this.Id = location.Id;
+            this.Name = location.Name;
+
+            this.AverageRating = GetAverageRating(repositoryFactory);
+            this.Review = GetReviewsList(repositoryFactory);
+        }
+
+       
     }
 }
