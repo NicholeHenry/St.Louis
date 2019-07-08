@@ -19,8 +19,8 @@ namespace St.Louis.ViewModels.Location
         public string AverageRating { get; set; }
         public string Description { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
-        public IEnumerable<SelectListItem> Rating { get; set; }
-        public IEnumerable<SelectListItem> Review { get; set; }
+        public List<int> Rating { get; set; }
+        public List<string> Review { get; set; }
         
 
 
@@ -41,12 +41,12 @@ namespace St.Louis.ViewModels.Location
                     .ToList();
             }
 
-       private IEnumerable<SelectListItem> GetReviewsList(Factory repositoryFactory)
+       private List<string> GetReviewsList(Factory repositoryFactory)
              {
                  return repositoryFactory.GetRateReviewRepository()
                      .GetModels()
-                     
-                     .Select(r => new SelectListItem(r.Review, r.Id.ToString(),r.Id == r.LocationId));
+                     .Where(r=> r.LocationId == Id)
+                     .Select(r=>r.Review).ToList();
              }
 
        private string  GetAverageRating(Factory repositoryFactory)
