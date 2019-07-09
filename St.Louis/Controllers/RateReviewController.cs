@@ -19,7 +19,7 @@ namespace St.Louis.Controllers
 
         [HttpPost]
         public IActionResult Create(int locationId, RateReviewCreateViewModel model)
-        {
+        {   
             if (!ModelState.IsValid)
                 return View(model);
             model.Persist();
