@@ -34,7 +34,7 @@ namespace St.Louis.ViewModels.RateReview
             Models.RateReview rateReview = new Models.RateReview
             {
                 LocationId = this.LocationId,
-                Rating = this.Rating,
+                Ratings = this.Ratings,
                 Review = this.Review
             };
             repositoryFactory.GetRateReviewRepository().Save(rateReview);
