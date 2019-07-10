@@ -40,7 +40,7 @@
 
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
 
-                @Html.ActionLink("Rate", "Create", "RateReviews", new { LocationId = item.Id }) |
+                @Html.ActionLink("Rate", "RateReview.Create", new { id = item.Id}) |
 
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
 
