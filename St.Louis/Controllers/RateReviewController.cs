@@ -24,10 +24,11 @@ namespace St.Louis.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         public IActionResult Create(int locationId, RateReviewCreateViewModel model)
         {
+            
             if (!ModelState.IsValid)
             {
                 return View();

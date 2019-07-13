@@ -29,13 +29,15 @@ namespace St.Louis.ViewModels.Location
 
        public static List<LocationListViewModel> GetLocations(Factory repositoryFactory)
             {
+
+           
             return repositoryFactory.GetLocationRepository()
                 .GetModels()
                 .Select(location => new LocationListViewModel(location, repositoryFactory))
                 .ToList();
             }
 
-       private List<string> GetReviewsList(Factory repositoryFactory)
+      /* private List<string> GetReviewsList(Factory repositoryFactory)
              {
                  return repositoryFactory.GetRateReviewRepository()
                      .GetModels()
@@ -45,15 +47,21 @@ namespace St.Louis.ViewModels.Location
 
        private string  GetAverageRating(Factory repositoryFactory)
          {
-            
-            
+            if (Rating == null  )
+            {
+                return "No Ratings";
+            }
+            else
+            {
+
+
                 return repositoryFactory.GetRateReviewRepository()
                     .GetModels()
                     .Where(r => r.LocationId == Id)
                     .Select(r => r.Rating).Average().ToString();
-            
+            }
 
-         }
+         }*/
 
 
         public LocationListViewModel(Models.Location location, Factory repositoryFactory)
@@ -61,8 +69,11 @@ namespace St.Louis.ViewModels.Location
             this.Id = location.Id;
             this.Name = location.Name;
             this.Description = location.Description;
-            this.AverageRating = GetAverageRating(repositoryFactory);
-            this.Review = GetReviewsList(repositoryFactory);
+            this.AverageRating = Rating.Average().ToString();
+
+            this.Review = Review; //GetReviewsList(repositoryFactory);
+
+            
         }
 
        
