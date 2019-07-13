@@ -8,10 +8,11 @@ using St.Louis.Models;
 namespace St.Louis.Data.Repositories
 {
     public class Factory
-    {
+    { 
+        
         private  ApplicationDbContext context;
 
-        public  Factory(ApplicationDbContext context)
+        public Factory(ApplicationDbContext context)
         {
             this.context = context;
         }

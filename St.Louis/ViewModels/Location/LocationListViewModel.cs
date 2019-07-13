@@ -45,18 +45,13 @@ namespace St.Louis.ViewModels.Location
 
        private string  GetAverageRating(Factory repositoryFactory)
          {
-            if (Rating == null)
-            {
-                return ("No ratings yet");
-            }
-
-            else
-            {
+            
+            
                 return repositoryFactory.GetRateReviewRepository()
                     .GetModels()
                     .Where(r => r.LocationId == Id)
                     .Select(r => r.Rating).Average().ToString();
-            }
+            
 
          }
 
